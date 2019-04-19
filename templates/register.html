@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main %}
+<main class="container p-5">
+  <form action="/register" method="post" class="needs-validation" novalidate>
+    <div class="form-group">
+      <input autocomplete="off" autofocus class="form-control" name="username" id="username" placeholder="Username" type="text" oninput="check()" required>
+      <div class="invalid-feedback">
+        Please choose a username.
+      </div>
+    </div>
+    <div class="form-group">
+      <input class="form-control" name="password" placeholder="Password" type="password" required>
+      <div class="invalid-feedback">
+        Please choose a password.
+      </div>
+    </div>
+    <div class="form-group">
+      <input class="form-control" name="confirmation" placeholder="Confirm Password" type="password" required>
+      <div class="invalid-feedback">
+        Please confirm password.
+      </div>
+    </div>
+    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#registerModal">Register</button>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="registerModalLabel">Confirm registration?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</main>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+</script>
+{% endblock %}

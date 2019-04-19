@@ -1,0 +1,124 @@
+body {
+    background-color: #e5e5e5;
+}
+
+.navbar {
+    background-color: #94c261;
+}
+
+.nav-item {
+    font-size: 1.2em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+main .form-control {
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main {
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main img {
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+#logo {
+    width: 120px;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+#footer {
+    background-color: #353535;
+    color: #ffffff;
+    text-align: center;
+}
+
+#footerLogo {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 200px;
+}
+
+#credit {
+    margin-bottom: 0px;
+    padding-bottom: 20px;
+}
+
+.lead {
+    font-size: 2em;
+}
+
+.fab {
+    color: #808080;
+}
+
+.fab:hover {
+    color: #a6a6a6;
+}
+
+#start {
+    background-size: cover;
+    background-image: url(/static/fruits.jpg);
+    color: white;
+    text-shadow: 3px 3px 5px #000000;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#calc-image {
+    background-size: cover;
+    background-image: url(/static/fitness2.jpg);
+    color: white;
+    text-shadow: 3px 3px 5px #000000;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#health-image {
+    background-size: cover;
+    background-image: url(/static/food1.jpg);
+    color: white;
+    text-shadow: 3px 3px 5px #000000;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#calorie-image {
+    background-size: cover;
+    background-image: url(/static/food2.jpg);
+    color: white;
+    text-shadow: 3px 3px 5px #000000;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.tips {
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+    font-size: 3em;
+}
+
+.cite {
+    color: #000000;
+    margin-bottom: 1.5em;
+}
+
+#addSpace {
+    margin-bottom: 3em;
+}

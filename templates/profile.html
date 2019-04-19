@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{ session.username }}'s profile
+{% endblock %}
+
+{% block main %}
+<main class="container p-5">
+  <table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Calories consumed</th>
+        <th scope="col">Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% if (calories is defined) and calories %}
+    {% for calorie in calories %}
+    <tr>
+      <td>{{ calorie.calorie }}</td>
+      <td>{{ calorie.date }}</td>
+      <td>
+        <form action="/delete" method="post">
+          <button type="button" class="close text-light" data-toggle="modal" data-target="#deleteModal">&times;</button>
+
+          <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-dark" id="deleteModalLabel">Confirm deletion of calories?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" name="date" id="date" value="{{ calorie.date }}" class="btn btn-primary">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+      <td colspan="3"><p class="display-3">Nothing to see here!</p></td>
+    </tr>
+    {% endif %}
+    </tbody>
+  </table>
+</main>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'calculator.html' %}
+
+{% block title %}
+Waist-to-Hip Ratio
+{% endblock %}
+
+{% block calculator %}
+<h2 class="display-2">Waist-to-Hip Ratio</h2>
+<form>
+  <div class="form-group">
+    <label class="col-form-label">Waist Measurement:</label>
+    <input autocomplete="off" class="form-control" name="waist" id="waist" placeholder="cm" type="number" min="1" step="0.1">
+    <label class="col-form-label">Hip Measurement:</label>
+    <input autocomplete="off" class="form-control" name="hip" id="hip" placeholder="cm" type="number" min="1" step="0.1">
+  </div>
+  <button class="btn btn-primary mb-3" type="button" onclick="whr()">Calculate</button>
+</form>
+<div id="whr-calc"></div>
+<p>The waist-to-hip ratio (WHR) is used as a quick and easy way to measure whether you could be at risk for future health problems and is well supported in scientific fields as an indicator for major health risks. Experts have suggested that WHR is an accurate measure because, in addition to measurements such as your BMI calculation and BMR calculation, it matters where on your body you carry any excess weight.</p>
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Female</th>
+      <th scope="col">Male</th>
+      <th scope="col">Health Risk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0.80 or lower</td>
+      <td>0.95 or lower</td>
+      <td>Low health risk</td>
+    </tr>
+    <tr>
+      <td>0.81 to 0.84</td>
+      <td>0.96 to 1.0</td>
+      <td>Moderate risk</td>
+    </tr>
+    <tr>
+      <td>0.85 or higher</td>
+      <td>1.0 or higher</td>
+      <td>High risk</td>
+    </tr>
+  </tbody>
+</table>
+<p>Women with a ratio of 0.8 or below, and men at 0.95 or below are pear shaped. People with pear shaped bodies are in the lower risk category for health problems such as heart disease, type 2 diabetes and some forms of cancer.</p>
+<p>Women with a ratio of 0.85 or above, and men with a ratio of 1.0 or above are considered to have apple shaped bodies. Fat tends to gather around the middle, and apple shaped bodies face a high risk of type 2 diabetes and heart disease, and even some types of cancer.</p>
+<p>People whose ratios fall between these apple and pear thresholds are at moderate risk of health problems, and are sometimes called avocados.</p>
+<p>In addition to the above, the World Health Organisation has defined abdominal obesity as being a waist-hip ratio above 0.90 for males and above 0.85 for females.</p>
+<hr>
+<p>All information were cited from <a href="https://www.thecalculatorsite.com/health/whr-calculator.php">Waist-to-Hip Ratio Calculator</a> from TheCalculatorSite.com.</p>
+
+<script>
+    function whr()
+    {
+        let waist = document.getElementById("waist").value;
+        let hip = document.getElementById("hip").value;
+
+        // If nothing is inputted, don't run function
+        if (waist == "" || hip == "")
+        {
+            document.querySelector('#whr-calc').innerHTML = '';
+            return;
+        }
+
+        let total = waist / hip;
+        total = Math.round( total * 100 ) / 100;
+        document.querySelector('#whr-calc').innerHTML = '<div class="alert alert-success" role="alert"> Your waist-to-hip ratio is ' + total + '.</div>';
+    }
+</script>
+{% endblock %}

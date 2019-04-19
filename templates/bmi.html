@@ -1,0 +1,78 @@
+{% extends 'calculator.html' %}
+
+{% block title %}
+Body Mass Index
+{% endblock %}
+
+{% block calculator %}
+<h2 class="display-2">Body Mass Index</h2>
+<form>
+  <div class="form-group">
+    <label class="col-form-label">Height:</label>
+    <input autocomplete="off" class="form-control" name="height" id="height" placeholder="cm" type="number" min="1" step="0.1">
+    <label class="col-form-label">Weight:</label>
+    <input autocomplete="off" class="form-control" name="weight" id="weight" placeholder="kg" type="number" min="1" step="0.1">
+  </div>
+  <button class="btn btn-primary mb-3" type="button" onclick="bmi()">Calculate</button>
+</form>
+<div id="bmi-calc"></div>
+<p>The body mass index calculator measurement is the calculation of your body weight in relation to your height and is commonly used as an indicator of whether you might be in a risk category for health problems caused by your weight. Using a BMI calculator such as the one on this page, you enter your weight and height measurements. Those figures are entered into the BMI formula (more on that below) to produce your current BMI reading.</p>
+<p>The <strong>BMI classifications for men and women</strong> established by the World Health Organization (WHO) are as follows:</p>
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Body Mass Index (kg/m2)</th>
+      <th scope="col">Classification</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>less than 18.5:</td>
+      <td>underweight</td>
+    </tr>
+    <tr>
+      <td>18.5 - 24.9:</td>
+      <td>normal weight</td>
+    </tr>
+    <tr>
+      <td>25 - 29.9:</td>
+      <td>overweight</td>
+    </tr>
+    <tr>
+      <td>30 - 34.9:</td>
+      <td>class I obese</td>
+    </tr>
+    <tr>
+      <td>35 - 39.9:</td>
+      <td>class II obese</td>
+    </tr>
+    <tr>
+      <td>40 upwards:</td>
+      <td>class III obese</td>
+    </tr>
+  </tbody>
+</table>
+<p>It is important to remember that BMI measurements do not make a distinction between whether you are male or female, whether you have a large or small body frame, whether you have high muscle mass and the areas in which fat is distributed around your body. So, someone who has a very muscular physique (a body builder, for example) may have a high BMI without having excess fat. For this reason, BMI is not an indicator of obesity on its own.</p>
+<hr>
+<p>All information were cited from <a href="https://www.thecalculatorsite.com/health/bmicalculator.php">BMI Calculator (Metric and Imperial)</a> from TheCalculatorSite.com.</p>
+
+<script>
+    function bmi()
+    {
+        let height = document.getElementById("height").value;
+        let weight = document.getElementById("weight").value;
+
+        // If nothing is inputted, don't run function
+        if (height == "" || weight == "")
+        {
+            document.querySelector('#bmi-calc').innerHTML = '';
+            return;
+        }
+
+        height /= 100;
+        let total = weight / height / height;
+        total = Math.round( total * 10 ) / 10;
+        document.querySelector('#bmi-calc').innerHTML = '<div class="alert alert-success" role="alert"> Your BMI is ' + total + '.</div>';
+    }
+</script>
+{% endblock %}

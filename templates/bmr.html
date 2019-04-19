@@ -1,0 +1,64 @@
+{% extends 'calculator.html' %}
+
+{% block title %}
+Basal Metabolic Rate
+{% endblock %}
+
+{% block calculator %}
+<h2 class="display-2">Basal Metabolic Rate (BMR)</h2>
+<form>
+  <div class="form-group">
+    <label class="col-form-label">Gender:</label>
+    <select class="form-control" name="gender" id="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    <label class="col-form-label">Age:</label>
+    <input autocomplete="off" class="form-control" name="age" id="age" placeholder="years" type="number" min="1" step="1">
+    <label class="col-form-label">Height:</label>
+    <input autocomplete="off" class="form-control" name="height" id="height" placeholder="cm" type="number" min="1" step="0.1">
+    <label class="col-form-label">Weight:</label>
+    <input autocomplete="off" class="form-control" name="weight" id="weight" placeholder="kg" type="number" min="1" step="0.1">
+  </div>
+  <button class="btn btn-primary mb-3" type="button" onclick="bmr()">Calculate</button>
+</form>
+<div id="bmr-calc"></div>
+<p>BMR stands for Basal Metabolic Rate and represents the number of calories you would burn in a day if you were inactive and stayed in bed all day. Our BMR calculator allows you to calculate not only the number of calories you burn when inactive, but also a daily calorie figure that takes into account your lifestyle activity level. These two figures together give you a representative figure for your daily calorie intake. You can learn more about BMR in our article, how to calculate BMR.</p>
+<p>It is important to bear in mind that Basal Metabolic Rate calculations do not take into account for lean body mass, which will obviously have a factor of its own. Very muscular people, for example, will receive a figure that probably under-estimates their calorie needs and very overweight people will likely get a calculation that over-estimates their calorie requirements.</p>
+<hr>
+<p>All information were cited from <a href="https://www.thecalculatorsite.com/health/bmr-calculator.php">BMR Calculator</a> from TheCalculatorSite.com.</p>
+
+<script>
+    function bmr()
+    {
+        let age = document.getElementById("age").value;
+        let height = document.getElementById("height").value;
+        let weight = document.getElementById("weight").value;
+        let gender = document.getElementById("gender").value
+
+        // If nothing is inputted, don't run function
+        if (height == "" || weight == "" || age == "")
+        {
+            document.querySelector('#bmr-calc').innerHTML = '';
+            return;
+        }
+
+        height *= 6.25;
+        weight *= 10;
+        age *= 5;
+        let total = weight + height - age
+        if (gender == "male")
+        {
+            total += 5;
+            total = Math.round( total * 10 ) / 10;
+            document.querySelector('#bmr-calc').innerHTML = '<div class="alert alert-success" role="alert"> Your BMR is ' + total + '.</div>';
+        }
+        else
+        {
+            total -= 161;
+            total = Math.round( total * 10 ) / 10;
+            document.querySelector('#bmr-calc').innerHTML = '<div class="alert alert-success" role="alert"> Your BMR is ' + total + '.</div>';
+        }
+    }
+</script>
+{% endblock %}

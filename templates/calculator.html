@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Health Calculators
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron jumbotron-fluid" id="calc-image">
+  <div class="container mb-5">
+    <h1 class="display-1">Health Calculators</h1>
+  </div>
+</div>
+
+<div class="container mb-5 p-0">
+  <div class="row">
+    <div class="col-md-3 mt-5">
+      <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action disabled">
+          Choose a calculator
+        </button>
+        <a href="/bmi" class="list-group-item list-group-item-action">Body Mass Index</a>
+        <a href="/bmr" class="list-group-item list-group-item-action">Basal Metabolic Rate Calculator</a>
+        <a href="/whr" class="list-group-item list-group-item-action">Waist to Hip Ratio</a>
+      </div>
+    </div>
+    <div class="col-md-9">
+      {% if self.calculator() %}
+      {% block calculator %}{% endblock %}
+      {% else %}
+      <h2 class="display-3 mt-5">Choose a calculator</h2>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  <div class="container-fluid padding">
+    <div class="row justify-content-center">
+      <div class="col-md-5 text-center">
+        <img src="/static/logo.png" alt="Logo" id="footerLogo">
+        <p>This is a web app created as part of the Final Project for CS50x : Introduction to Computer Science. All contents, images, and text used for this project belong to their respective owner.</p>
+        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter-square fa-2x"></i></a>
+        <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href="https://www.pinterest.com/" target="_blank"><i class="fab fa-pinterest-square fa-2x"></i></a>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <p id="credit">Done by Francis Valdez</p>
+</footer>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Health App
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron jumbotron-fluid" id="start">
+  <div class="container">
+    <h1 class="display-1">Health App</h1>
+    <p class="lead">An app to better your health!</p>
+  </div>
+</div>
+
+<div class="container col-lg-10 col-md-12">
+  <div class="card-deck mx-auto mb-5">
+    <div class="card col-md-12 p-0">
+      <img class="card-img-top" src="/static/fruits1.jpg" alt="Fruits Image">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">Why be healthy?</h5>
+        <p class="card-text">Find out the benefits of keeping fit and eating healthy!</p>
+        <a href="/health" class="btn btn-outline-info mt-auto">Health</a>
+      </div>
+    </div>
+    <div class="card col-md-12 p-0">
+      <img class="card-img-top" src="/static/food.jpg" alt="Food Image">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">Calorie Tracker</h5>
+        <p class="card-text">Track your calorie intake daily quickly with this app!</p>
+        <p class="card-text mb-2"><small class="text-muted">Must be logged in.</small></p>
+        <a href="/calorie" class="btn btn-outline-info mt-auto">Track</a>
+      </div>
+    </div>
+    <div class="card col-md-12 p-0">
+      <img class="card-img-top" src="/static/fitness1.jpg" alt="Fitness Image">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">Health Calculators</h5>
+        <p class="card-text">Find out how healthy you are using the various health calculators provided!</p>
+        <a href="/calculator" class="btn btn-outline-info mt-auto">Calculator</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  <div class="container-fluid padding">
+    <div class="row justify-content-center">
+      <div class="col-md-5 text-center">
+        <img src="/static/logo.png" alt="Logo" id="footerLogo">
+        <p>This is a web app created as part of the Final Project for CS50x : Introduction to Computer Science. All contents, images, and text used for this project belong to their respective owner.</p>
+        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter-square fa-2x"></i></a>
+        <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href="https://www.pinterest.com/" target="_blank"><i class="fab fa-pinterest-square fa-2x"></i></a>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <p id="credit">Done by Francis Valdez</p>
+</footer>
+{% endblock %}
